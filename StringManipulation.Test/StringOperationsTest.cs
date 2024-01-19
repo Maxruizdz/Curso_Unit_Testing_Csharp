@@ -10,12 +10,33 @@ namespace StringManipulation.Test
     {
         [Fact]
         public void ConcatenateStrings()
-        {
+        {   //Arrange
             var StringOperation = new StringOperations();
-
+            //Act
             var result = StringOperation.ConcatenateStrings("Hello", "Word");
+            //Assert
+            Assert.NotEmpty(result);
+            Assert.NotNull(result);
+            Assert.Equal("Hello Word", result);
+        }
+        [Fact] 
+        public void IsPalindromeTrue(){
 
-            Assert.Equal("HelloWord", result);
+            var StringOperation = new StringOperations();
+            //Act
+            var result = StringOperation.IsPalindrome("ama");
+            //Assert
+            Assert.True(result);
+         }
+
+        public void IsPalindromeFalse()
+        {
+
+            var StringOperation = new StringOperations();
+            //Act
+            var result = StringOperation.IsPalindrome("Futbol");
+            //Assert
+            Assert.False(result);
         }
 
     }
