@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace StringManipulation.Test
 {
@@ -31,13 +32,47 @@ namespace StringManipulation.Test
 
         public void IsPalindromeFalse()
         {
-
+            //Arrange
             var StringOperation = new StringOperations();
             //Act
             var result = StringOperation.IsPalindrome("Futbol");
             //Assert
             Assert.False(result);
         }
+        [Fact]
+        public void QuantintyInWords() {
 
+            //Arrange
+            var StringOperation = new StringOperations();
+            //Act
+            var result = StringOperation.QuantintyInWords("cat", 10);
+
+            //Assert
+            Assert.StartsWith("diez", result);
+            Assert.Contains("cat", result);
+        
+        }
+        [Fact]
+        public void GetStringLength_Exception() {
+
+
+            var StringOperation = new StringOperations();
+
+            Assert.ThrowsAny<ArgumentNullException>(()=>StringOperation.GetStringLength(null));
+
+        }
+
+        [Fact]
+        public void TruncateString_Exception() {
+
+
+            var StringOperation = new StringOperations();
+
+           
+            Assert.ThrowsAny<ArgumentOutOfRangeException>(() => StringOperation.TruncateString("Futbol", 0) );
+
+
+
+        }
     }
 }
