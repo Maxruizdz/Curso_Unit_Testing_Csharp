@@ -20,26 +20,24 @@ namespace StringManipulation.Test
             Assert.NotNull(result);
             Assert.Equal("Hello Word", result);
         }
-        [Fact] 
-        public void IsPalindromeTrue(){
+        [Theory]
+        [InlineData("ama", true)]
+        [InlineData("futbol", false)]
+     
+
+        public void IsPalindrome(string palabra, bool expected) {
 
             var StringOperation = new StringOperations();
             //Act
-            var result = StringOperation.IsPalindrome("ama");
+            var result = StringOperation.IsPalindrome(palabra);
             //Assert
-            Assert.True(result);
-         }
+            Assert.Equal(expected, result);
 
-        public void IsPalindromeFalse()
-        {
-            //Arrange
-            var StringOperation = new StringOperations();
-            //Act
-            var result = StringOperation.IsPalindrome("Futbol");
-            //Assert
-            Assert.False(result);
+
         }
+        
         [Fact]
+
         public void QuantintyInWords() {
 
             //Arrange
@@ -50,7 +48,7 @@ namespace StringManipulation.Test
             //Assert
             Assert.StartsWith("diez", result);
             Assert.Contains("cat", result);
-        
+
         }
         [Fact]
         public void GetStringLength_Exception() {
@@ -58,7 +56,7 @@ namespace StringManipulation.Test
 
             var StringOperation = new StringOperations();
 
-            Assert.ThrowsAny<ArgumentNullException>(()=>StringOperation.GetStringLength(null));
+            Assert.ThrowsAny<ArgumentNullException>(() => StringOperation.GetStringLength(null));
 
         }
 
@@ -68,8 +66,24 @@ namespace StringManipulation.Test
 
             var StringOperation = new StringOperations();
 
-           
-            Assert.ThrowsAny<ArgumentOutOfRangeException>(() => StringOperation.TruncateString("Futbol", 0) );
+
+            Assert.ThrowsAny<ArgumentOutOfRangeException>(() => StringOperation.TruncateString("Futbol", 0));
+
+
+
+        }
+        [Theory]
+        [InlineData("V", 5)]
+        [InlineData("X" ,10)]
+        [InlineData("III", 3)]
+        public void FromRomanToNumber(string roman_Number, int expected) {
+
+
+            var StringOperation = new StringOperations();
+
+            var result = StringOperation.FromRomanToNumber(roman_Number);
+
+            Assert.Equal(expected, result);
 
 
 
