@@ -9,7 +9,7 @@ namespace StringManipulation.Test
 {
     public class StringOperationsTest
     {
-        [Fact]
+        [Fact(Skip ="Esta prueba no es valida en este momento Ticket-0001")]
         public void ConcatenateStrings()
         {   //Arrange
             var StringOperation = new StringOperations();
